@@ -28,5 +28,11 @@ namespace InnManager
         public bool isAvailable { get; set; } = true;
 
         public decimal NightlyRate { get; set; } = 0m;
+
+        int Floor { get; set; } = 0;
+        int Capacity { get; set; } = 0;
+        bool HasBalcony { get; set; } = false;
+        bool IsClean { get; set; } = true;
+        string Status { get; set; } = "Available";
     }
 }
