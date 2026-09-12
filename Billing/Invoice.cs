@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InnManager
+namespace InnManager.Billing
 {
     /// <summary>
     /// Represents an invoice for a guest's stay at the inn.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InnManager
+namespace InnManager.Guests
 {
     /// <summary>
     /// Represents a guest staying at the inn, including their personal information and check-in status.

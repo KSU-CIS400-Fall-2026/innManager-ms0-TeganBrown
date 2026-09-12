@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InnManager
+namespace InnManager.Housekeeping
 {
     /// <summary>
     /// Represents a housekeeping task for a specific room in the inn.
