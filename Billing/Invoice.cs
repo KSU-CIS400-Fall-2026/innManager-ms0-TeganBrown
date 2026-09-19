@@ -10,25 +10,19 @@ namespace InnManager.Billing
     /// <remarks>
     /// The Invoice class contains properties for storing invoice information such as GuestName, RoomNumber, RoomCharge, and ServiceCharge. It is used to manage invoices within the inn management system.
     /// </remarks>
-    public class Invoice
+    public class Invoice 
     {
         public string GuestName { get; set; } = string.Empty;
         public string RoomNumber { get; set; } = string.Empty;
-        public decimal RoomCharge { get; set; } = decimal.Zero;
-        public decimal ServiceCharge { get; set; } = decimal.Zero;
-        public bool IsPaid { get; set; } = false;
-        public decimal TotalAmount 
+        public List<BillingRecord> BillingRecords { get; } = new();
+        public decimal TotalCharges => BillingRecords.OfType<Charge>().Sum(c => c.Amount);
+        public decimal TotalPayments => BillingRecords.OfType<Payment>().Sum(p => p.Amount);
+        public decimal BalanceDue => TotalCharges - TotalPayments;
+        public string Status
         {
             get
             {
-                return RoomCharge + ServiceCharge;
-            } 
-        }
-        public string Status 
-        {
-            get
-            {
-                if (IsPaid)
+                if (BalanceDue <= 0)
                 {
                     return "Paid";
                 }
@@ -36,7 +30,9 @@ namespace InnManager.Billing
                 {
                     return "Unpaid";
                 }
-            } 
+            }
         }
+
+
     }
 }
