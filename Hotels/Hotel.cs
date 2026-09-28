@@ -61,12 +61,39 @@ namespace InnManager.Hotels
         /// <summary>
         /// Gets the count of available rooms in the hotel.
         /// </summary>
-        public int AvailableRoomCount => Rooms.Count(r => r.isAvailable);
+        public int AvailableRoomCount 
+        {
+            get
+            {
+                int count = 0;
+                foreach (Room r in Rooms)
+                {
+                    if (r.Status == RoomStatus.Available)
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+        }
         /// <summary>
         /// Gets the count of occupied rooms in the hotel.
         /// </summary>
-        public int OccupiedRoomCount => Rooms.Count(r => !r.isAvailable);
-
+        public int OccupiedRoomCount
+        {
+            get
+            {
+                int count = 0;
+                foreach (Room r in Rooms)
+                {
+                    if (r.Status == RoomStatus.Occupied)
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+        }
         #endregion
         /// <summary>
         /// Initializes a new instance of the Hotel class with the specified name and type.

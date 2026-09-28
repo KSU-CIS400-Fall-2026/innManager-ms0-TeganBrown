@@ -43,7 +43,7 @@ namespace InnManager.Reservations
         { 
             get
             {
-                return DateTime.Now > CheckOutDate && !IsCheckedOut;
+                return DateTime.Now.Date > CheckOutDate.Date && !IsCheckedOut;
             }
         }
         /// <summary>

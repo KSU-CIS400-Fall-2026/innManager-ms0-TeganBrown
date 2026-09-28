@@ -45,22 +45,22 @@ namespace InnManager.Rooms
         /// <summary>
         /// Gets or sets the floor number on which the room is located within the hotel.
         /// </summary>
-        int Floor { get; set; } = 0;
+        public int Floor { get; set; } = 0;
         /// <summary>
         /// Gets or sets the capacity of the room, which indicates the maximum number of guests that can be accommodated in the room.
         /// </summary>
-        int Capacity { get; set; } = 0;
+        public int Capacity { get; set; } = 1;
         /// <summary>
         /// Gets or sets a value indicating whether the room has a balcony.
         /// </summary>
-        bool HasBalcony { get; set; } = false;
+        public bool HasBalcony { get; set; } = false;
         /// <summary>
         /// Gets or sets a value indicating whether the room is clean.
         /// </summary>
-        bool IsClean { get; set; } = true;
+        public bool IsClean { get; set; } = true;
         /// <summary>
         /// Gets or sets the status of the room, represented by the RoomStatus enum.
         /// </summary>
-        RoomStatus Status { get; set; } = RoomStatus.Available;
+        public RoomStatus Status { get; set; } = RoomStatus.Available;
     }
 }

@@ -5,14 +5,23 @@ using System.Text;
 
 namespace InnManager.Billing
 {
+    /// <summary>
+    /// Represents a summary of billing records, providing methods to calculate total charges, total payments, and net balance.
+    /// </summary>
     public class BillingSummary : IEnumerable<IBillingRecord>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BillingSummary"/> class with the specified billing records.
+        /// </summary>
+        /// <param name="records"></param>
         public BillingSummary(IEnumerable<IBillingRecord> records)
         {
             _records = records;
         }
-
-        decimal TotalCharges 
+        /// <summary>
+        /// Gets the total charges from the billing records.
+        /// </summary>
+        public decimal TotalCharges 
         {
             get
             {
@@ -27,15 +36,17 @@ namespace InnManager.Billing
                 return total;
             }
         }
-
-        decimal TotalPayments 
+        /// <summary>
+        /// Gets the total payments from the billing records.
+        /// </summary>
+        public decimal TotalPayments 
         {
             get
             {
                 decimal total = 0;
                 foreach (var record in _records)
                 {
-                    if (record is Payment && record.IsProcessed != false)
+                    if (record is Payment && record.IsProcessed)
                     {
                         total += record.Amount;
                     }
@@ -43,27 +54,36 @@ namespace InnManager.Billing
                 return total;
             }
         }
-
-        decimal NetBalance 
+        /// <summary>
+        /// Gets the net balance, calculated as the difference between total charges and total payments.
+        /// </summary>
+        public decimal NetBalance 
         {
             get
             {
                 return TotalCharges - TotalPayments;
             }
         }
-
-        // Implement IEnumerable<IBillingRecord>
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection of billing records.
+        /// </summary>
+        /// <returns>an enumerator</returns>
         public IEnumerator<IBillingRecord> GetEnumerator()
         {
             return _records.GetEnumerator();
         }
 
-        // Implement non-generic IEnumerable
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection of billing records.
+        /// </summary>
+        /// <returns>an enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
-
+        /// <summary>
+        /// The collection of billing records included in the summary.
+        /// </summary>
         private readonly IEnumerable<IBillingRecord> _records;
     }
 }
