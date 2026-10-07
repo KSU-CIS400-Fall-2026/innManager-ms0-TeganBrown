@@ -28,7 +28,7 @@ namespace InnManager.Billing
                 decimal total = 0;
                 foreach (var record in _records)
                 {
-                    if (record is Charge && record.IsProcessed != false)
+                    if (record is Charge && record.IsProcessed)
                     {
                         total += record.Amount;
                     }

@@ -1,0 +1,10 @@
+﻿global using InnManager;
+global using InnManager.Services;
+global using InnManager.Rooms;
+global using InnManager.Reservations;
+global using InnManager.Housekeeping;
+global using InnManager.Hotels;
+global using InnManager.Guests;
+global using InnManager.Enums;
+global using InnManager.Employees;
+global using InnManager.Billing;
