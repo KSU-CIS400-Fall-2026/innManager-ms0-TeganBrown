@@ -30,5 +30,9 @@ namespace InnManager.Housekeeping
                 }
             } 
         }
+        /// <summary>
+        /// Gets or sets the name of the staff member assigned to the housekeeping task.
+        /// </summary>
+        public string AssignedStaff { get; set; } = string.Empty;
     }
 }

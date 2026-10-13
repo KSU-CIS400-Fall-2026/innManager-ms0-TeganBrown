@@ -54,7 +54,17 @@ namespace InnManager.Billing
                 }
             }
         }
-
-
+        /// <summary>
+        /// Gets or sets the invoice number.
+        /// </summary>
+        public string InvoiceNumber { get; set; } = string.Empty;
+        /// <summary>
+        /// Gets or sets the date of the invoice.
+        /// </summary>
+        public DateTime InvoiceDate { get; set; } = DateTime.Now;
+        /// <summary>
+        /// Gets or sets the due date of the invoice.
+        /// </summary>
+        public DateTime DueDate { get; set; } = DateTime.Now;
     }
 }

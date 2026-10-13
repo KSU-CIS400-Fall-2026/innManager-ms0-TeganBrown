@@ -21,6 +21,7 @@ namespace InnManagerTests.Housekeeping
             Assert.Equal(task.ScheduledDate.Date, DateTime.Now.Date);
             Assert.False(task.IsCompleted);
             Assert.Equal(task.Status, "Not Completed");
+            Assert.Equal(task.AssignedStaff, string.Empty);
         }
     }
 }

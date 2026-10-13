@@ -23,6 +23,7 @@ namespace InnManagerTests.Billing
             Assert.False(payment.IsProcessed);
             Assert.Equal(payment.PaymentMethod, PaymentMethod.Cash);
             Assert.Equal(payment.SignedAmount, decimal.Zero);
+            Assert.Equal(string.Empty, payment.RefrenceNumber);
         }
         /// <summary>
         ///  checks that the signed amount equals the negative of the amount assigned

@@ -81,5 +81,9 @@ namespace InnManager.Reservations
                 }
             } 
         }
+        /// <summary>
+        /// Gets or sets the reservation number.
+        /// </summary>
+        public string ReservationNumber { get; set; } = string.Empty;
     }
 }

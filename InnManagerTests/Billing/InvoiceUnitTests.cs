@@ -23,6 +23,9 @@ namespace InnManagerTests.Billing
             Assert.Equal(invoice.TotalPayments, 0);
             Assert.Equal(invoice.BalanceDue, 0);
             Assert.Equal(invoice.Status, "Paid");
+            Assert.Equal(invoice.InvoiceNumber, string.Empty);
+            Assert.Equal(invoice.InvoiceDate.Date, DateTime.Now.Date);
+            Assert.Equal(invoice.DueDate.Date, DateTime.Now.Date);
         }
         /// <summary>
         /// Checks if the invoice is properly calculated

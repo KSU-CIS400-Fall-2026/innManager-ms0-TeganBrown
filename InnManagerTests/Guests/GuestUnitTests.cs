@@ -21,6 +21,10 @@ namespace InnManagerTests.Guests
             Assert.Equal(guest.Email, string.Empty);
             Assert.Equal(guest.PhoneNumber, string.Empty);
             Assert.False(guest.IsCheckedIn);
+            Assert.Equal(string.Empty, guest.GuestID);
+            Assert.Equal(string.Empty, guest.Address);
+            Assert.Equal(IDType.Other, guest.IDType);
+            Assert.Equal(string.Empty, guest.IDNumber);
         }
     }
 }

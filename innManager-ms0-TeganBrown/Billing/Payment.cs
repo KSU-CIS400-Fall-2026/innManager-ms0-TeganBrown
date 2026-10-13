@@ -1,6 +1,7 @@
 ﻿using InnManager.Enums;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace InnManager.Billing
@@ -18,5 +19,9 @@ namespace InnManager.Billing
         /// Gets the signed amount associated with the payment record. For payments, this value is negative, indicating a reduction in the total amount owed by the guest.
         /// </summary>
         public override decimal SignedAmount => -Amount;
+        /// <summary>
+        /// Gets or sets the reference number associated with the payment transaction.
+        /// </summary>
+        public string RefrenceNumber { get; set; } = string.Empty;
     }
 }

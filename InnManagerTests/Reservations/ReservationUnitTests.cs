@@ -26,6 +26,7 @@ namespace InnManagerTests.Reservations
             Assert.False(reservation.IsCheckoutOverdue);
             Assert.False(reservation.IsActive);
             Assert.Equal(reservation.Status, "Pending");
+            Assert.Equal(string.Empty, reservation.ReservationNumber);
 
         }
         /// <summary>

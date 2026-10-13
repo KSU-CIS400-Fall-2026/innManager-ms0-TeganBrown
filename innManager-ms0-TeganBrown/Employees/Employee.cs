@@ -33,5 +33,28 @@ namespace InnManager.Employees
         /// Gets or sets a value indicating whether the employee is currently active.
         /// </summary>
         public bool IsActive { get; set; } = true;
+        /// <summary>
+        /// Gets or sets the email address of the employee.
+        /// </summary>
+        public string Email { get; set; } = string.Empty;
+        /// <summary>
+        /// Gets or sets the phone number of the employee.
+        /// </summary>
+        public string PhoneNumber { get; set; } = string.Empty;
+        /// <summary>
+        /// Gets or sets the hire date of the employee.
+        /// </summary>
+        public DateTime HireDate { get; set; } = DateTime.Now;
+        /// <summary>
+        /// Gets or sets the Status of the employee.
+        /// </summary>
+        public string Status
+        {
+            get
+            {
+                if (IsActive) return "Active";
+                else return "Inactive";
+            }
+        }
     }
 }
