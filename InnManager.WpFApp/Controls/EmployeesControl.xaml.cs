@@ -22,5 +22,15 @@ namespace InnManager.WpFApp.Controls
         {
             InitializeComponent();
         }
+
+        private void AddEmployeeClick(object sender, RoutedEventArgs e)
+        {
+            Hotel hotel = DataContext as Hotel;
+            AddEmployeeWindow addEmployeeWindow = new AddEmployeeWindow(hotel)
+            {
+                Owner = Window.GetWindow(this)
+            };
+            addEmployeeWindow.ShowDialog();
+        }
     }
 }

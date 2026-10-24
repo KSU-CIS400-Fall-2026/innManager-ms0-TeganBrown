@@ -1,0 +1,77 @@
+﻿<Window x:Class="InnManager.WpFApp.AddWindows.AddReservationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InnManager.WpFApp.AddWindows"
+        mc:Ignorable="d"
+        Title="AddReservationWindow" Height="300" Width="325">
+    <Grid Background="#E9FCEE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.ColumnSpan="2" Background="#70EB95" BorderThickness="0,0,0,1" BorderBrush="Green">
+            <TextBlock Text="Add New Reservation" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </Border>
+
+        <DockPanel Grid.Row="1" Grid.Column="0" Margin="10,5,10,5" >
+            <TextBlock Text="Guest:" VerticalAlignment="Center" Margin="0,0,0,0" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+                <ComboBox x:Name="GuestComboBox" Margin="1,1,1,1" BorderBrush="White"/>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2" Grid.Column="0" Margin="10,5,10,5" >
+            <TextBlock Text="Room:" VerticalAlignment="Center" Margin="0,0,0,0" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+                <ComboBox x:Name="RoomComboBox" Margin="1,1,1,1" Background="White" BorderBrush="White"/>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Row="3" Grid.Column="0" Margin="10,5,10,5" >
+            <TextBlock Text="Check-In Date:" VerticalAlignment="Center" Margin="0,0,0,0" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+                <DatePicker x:Name="CheckInDatePicker" Margin="1,1,1,1" BorderBrush="White"/>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Row="4" Grid.Column="0" Margin="10,5,10,5" >
+            <TextBlock Text="Check-Out Date:" VerticalAlignment="Center" Margin="0,0,0,0" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+                <DatePicker x:Name="CheckOutDatePicker" Margin="1,1,1,1" BorderBrush="White"/>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Grid.Column="1" Margin="10,5,10,5" >
+            <TextBlock Text="Number of Guests:" VerticalAlignment="Center" Margin="0,0,0,0" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+                <TextBox x:Name="GuestNumTextBox" Margin="1,1,1,1" BorderBrush="White"/>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2" Grid.Column="1" Margin="10,5,10,5" >
+            <TextBlock Text="Status:" VerticalAlignment="Center" Margin="0,0,0,0" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+                <ComboBox x:Name="StatusComboBox" Margin="1,1,1,1" Background="White" BorderBrush="White"/>
+            </Border>
+        </DockPanel>
+
+
+
+        <Border Grid.Row="5" Grid.ColumnSpan="2" BorderBrush="Gray" BorderThickness="0,1,0,0"/>
+        <DockPanel Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+            <Button Content="Cancel" Width="90" Height="20"  BorderBrush="Gray" Click="CancelButtonClick" Margin="5" DockPanel.Dock="Right"/>
+            <Button Content="Add Reservation" Width="90" Height="20" Background="#70EB95" BorderBrush="Green" Click="AddReservationButtonClick"/>
+        </DockPanel>
+    </Grid>
+</Window>

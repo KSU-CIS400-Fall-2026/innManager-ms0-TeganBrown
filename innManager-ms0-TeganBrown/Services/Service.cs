@@ -1,6 +1,7 @@
 ﻿using InnManager.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace InnManager.Services
@@ -11,7 +12,7 @@ namespace InnManager.Services
     /// <remarks>
     /// The Service class contains properties for storing service information such as ServiceName, Description, Price, and IsAvailable status. It is used to manage services within the inn management system.
     /// </remarks>
-    public class Service
+    public class Service : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets or sets the name of the service.
@@ -33,5 +34,7 @@ namespace InnManager.Services
         /// Gets or sets the category of the service, represented by the ServiceCategory enum. This property allows for categorization of services into predefined categories such as Food, Beverage, Spa, etc.
         /// </summary>
         public ServiceCategory Category { get; set; } = ServiceCategory.Miscellaneous;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

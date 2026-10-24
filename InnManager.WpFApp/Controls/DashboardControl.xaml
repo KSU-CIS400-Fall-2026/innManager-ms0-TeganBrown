@@ -48,34 +48,15 @@
                     <TextBlock Text="Recent Reservations" FontSize="20" Grid.Row="0" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
 
                     <Border Grid.Row="1" Margin="5" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="6*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border Grid.Row="0" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,1,1" CornerRadius="5,0,0,0">
-                                <TextBlock Text="Guest" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                            </Border>
-                            <Border Grid.Row="0" Grid.Column="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
-                                <TextBlock Text="Room" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                            </Border>
-                            <Border Grid.Row="0" Grid.Column="2" BorderBrush="Gray" BorderThickness="0,0,1,1">
-                                <TextBlock Text="Check-In" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                            </Border>
-                            <Border Grid.Row="0" Grid.Column="3" BorderBrush="Gray" BorderThickness="0,0,1,1">
-                                <TextBlock Text="Check-Out" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                            </Border>
-                            <Border Grid.Row="0" Grid.Column="4" BorderBrush="Gray" BorderThickness="0,0,0,1" CornerRadius="0,5,0,0">
-                                <TextBlock Text="Status" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                            </Border>
-                        </Grid>
+                        <DataGrid ItemsSource="{Binding Reservations}" IsReadOnly="True" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Guest" Binding="{Binding GuestName}" Width="2*"/>
+                                <DataGridTextColumn Header="Room" Binding="{Binding RoomNumber}" Width="*"/>
+                                <DataGridTextColumn Header="Check-In" Binding="{Binding CheckInDate}" Width="2*"/>
+                                <DataGridTextColumn Header="Check-Out" Binding="{Binding CheckOutDate}" Width="2*"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="2*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Border>
                 </Grid>
             </Border>

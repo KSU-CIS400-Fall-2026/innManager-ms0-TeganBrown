@@ -1,6 +1,7 @@
 ﻿using InnManager.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace InnManager.Employees
@@ -11,7 +12,7 @@ namespace InnManager.Employees
     /// <remarks>
     /// The Employee class contains properties for storing employee information such as EmployeeID, FirstName, LastName, Position, and IsActive status. It is used to manage employee records within the inn management system.
     /// </remarks>
-    public class Employee
+    public class Employee : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets or sets the unique identifier for the employee. 
@@ -56,5 +57,11 @@ namespace InnManager.Employees
                 else return "Inactive";
             }
         }
+
+        public override string ToString()
+        {
+            return $"{LastName}, {FirstName}";
+        }
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

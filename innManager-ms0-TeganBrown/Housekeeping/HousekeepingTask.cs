@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace InnManager.Housekeeping
@@ -10,7 +11,7 @@ namespace InnManager.Housekeeping
     /// <remarks>
     /// The HousekeepingTask class contains properties for storing housekeeping task information such as RoomNumber, Description, ScheduledDate, and IsCompleted status. It is used to manage housekeeping tasks within the inn management system.
     /// </remarks>
-    public class HousekeepingTask
+    public class HousekeepingTask : INotifyPropertyChanged
     {
         public string RoomNumber { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
@@ -28,11 +29,14 @@ namespace InnManager.Housekeeping
                 {
                     return "Not Completed";
                 }
-            } 
+            }
+            set;
         }
         /// <summary>
         /// Gets or sets the name of the staff member assigned to the housekeeping task.
         /// </summary>
         public string AssignedStaff { get; set; } = string.Empty;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

@@ -22,5 +22,15 @@ namespace InnManager.WpFApp.Controls
         {
             InitializeComponent();
         }
+
+        private void AddInvoiceClick(object sender, RoutedEventArgs e)
+        {
+            Hotel hotel = DataContext as Hotel;
+            AddInvoiceWindow addInvoiceWindow = new AddInvoiceWindow(hotel)
+            {
+                Owner = Window.GetWindow(this)
+            };
+            addInvoiceWindow.ShowDialog();
+        }
     }
 }

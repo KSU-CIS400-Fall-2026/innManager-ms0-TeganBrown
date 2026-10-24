@@ -37,7 +37,7 @@
             </Border>
             <DockPanel Grid.Row="1">
                 <Border CornerRadius="5" Margin="10,7">
-                    <Button Content="  + Add Room  " Background="DarkGreen" Foreground="White" FontWeight="SemiBold"/>
+                    <Button Content="  + Add Room  " Background="DarkGreen" Foreground="White" FontWeight="SemiBold" Click="AddRoomClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Edit  " Background="#E9FCEE" FontWeight="SemiBold"/>
@@ -54,49 +54,21 @@
             </DockPanel>
 
             <Border Grid.Row="3" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                <TextBlock Text="Total Rooms: 0" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Rooms.Count, StringFormat='Total Rooms: {0}'}" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
             </Border>
             <Border Grid.Row="2" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="6*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" BorderThickness="0,0,1,1" BorderBrush="Gray">
-                        <TextBlock Text="  Room Number   " FontWeight="Bold"   VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Column="1" BorderThickness="0,0,1,1" BorderBrush="Gray">
-                        <TextBlock Text="   Room Type   " FontWeight="Bold"   VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Column="2" BorderThickness="0,0,1,1" BorderBrush="Gray">
-                        <TextBlock Text="   Floor   " FontWeight="Bold"   VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Column="3" BorderThickness="0,0,1,1" BorderBrush="Gray">
-                        <TextBlock Text="   Capacity   " FontWeight="Bold"   VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Column="4" BorderThickness="0,0,1,1" BorderBrush="Gray">
-                        <TextBlock Text="   Rate ($)   " FontWeight="Bold"   VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Column="5" BorderThickness="0,0,1,1" BorderBrush="Gray">
-                        <TextBlock Text="   Status   " FontWeight="Bold"   VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Column="6" BorderThickness="0,0,1,1" BorderBrush="Gray">
-                        <TextBlock Text="   Is Clean   " FontWeight="Bold"   VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Column="7" BorderThickness="0,0,0,1" BorderBrush="Gray">
-                        <TextBlock Text="   Has Balcony   " FontWeight="Bold"   VerticalAlignment="Center"/>
-                    </Border>
-                </Grid>
+                <DataGrid ItemsSource="{Binding Rooms}" IsReadOnly="True" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Room Number" Binding="{Binding roomNumber}" Width="*"/>
+                        <DataGridTextColumn Header="Room Type" Binding="{Binding roomType}" Width="*"/>
+                        <DataGridTextColumn Header="Floor" Binding="{Binding Floor}" Width="*"/>
+                        <DataGridTextColumn Header="Capacity" Binding="{Binding Capacity}" Width="*"/>
+                        <DataGridTextColumn Header="Rate ($)" Binding="{Binding NightlyRate}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                        <DataGridTextColumn Header="Is Clean" Binding="{Binding IsClean}" Width="*"/>
+                        <DataGridTextColumn Header="Has Balcony" Binding="{Binding HasBalcony}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Border>
         </Grid>
     </Border>

@@ -22,5 +22,15 @@ namespace InnManager.WpFApp.Controls
         {
             InitializeComponent();
         }
+
+        private void AddHousekeepingTaskClick(object sender, RoutedEventArgs e)
+        {
+            Hotel hotel = DataContext as Hotel;
+            AddHousekeepingTaskWindow addHousekeepingTaskWindow = new AddHousekeepingTaskWindow(hotel)
+            {
+                Owner = Window.GetWindow(this)
+            };
+            addHousekeepingTaskWindow.ShowDialog();
+        }
     }
 }

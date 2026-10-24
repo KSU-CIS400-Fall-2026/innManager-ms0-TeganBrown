@@ -22,5 +22,15 @@ namespace InnManager.WpFApp.Controls
         {
             InitializeComponent();
         }
+
+        private void AddPaymentClick(object sender, RoutedEventArgs e)
+        {
+            Hotel hotel = DataContext as Hotel;
+            AddPaymentWindow addPaymentWindow = new AddPaymentWindow(hotel)
+            {
+                Owner = Window.GetWindow(this)
+            };
+            addPaymentWindow.ShowDialog();
+        }
     }
 }

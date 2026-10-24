@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace InnManager.Reservations
@@ -10,7 +11,7 @@ namespace InnManager.Reservations
     /// <remarks>
     /// The Reservation class contains properties for storing reservation information such as GuestName, RoomNumber, CheckInDate, CheckOutDate, IsConfirmed status, and IsCheckedOut status. It also includes computed properties to determine if the checkout is overdue, if the reservation is active, and the current status of the reservation. It is used to manage reservations within the inn management system.
     /// </remarks>
-    public class Reservation
+    public class Reservation : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets or sets the name of the guest who made the reservation.
@@ -79,11 +80,16 @@ namespace InnManager.Reservations
                 {
                     return "Pending";
                 }
-            } 
+            }
+            set;
         }
         /// <summary>
         /// Gets or sets the reservation number.
         /// </summary>
         public string ReservationNumber { get; set; } = string.Empty;
+
+        public override string ToString() => $"{RoomNumber}: {GuestName}";
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

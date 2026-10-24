@@ -1,6 +1,7 @@
 ﻿using InnManager.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace InnManager.Rooms
@@ -11,9 +12,11 @@ namespace InnManager.Rooms
     /// <remarks>
     /// The Room class stores identifying information about a hotel room, including its room number, room type, nightly rate and current availability.
     /// </remarks>
-    public class Room
+    public class Room : INotifyPropertyChanged
     {
         private static long _nextID = 0;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public static long nextID
         {
@@ -62,5 +65,7 @@ namespace InnManager.Rooms
         /// Gets or sets the status of the room, represented by the RoomStatus enum.
         /// </summary>
         public RoomStatus Status { get; set; } = RoomStatus.Available;
+
+        public override string ToString() => $"{roomNumber}";
     }
 }

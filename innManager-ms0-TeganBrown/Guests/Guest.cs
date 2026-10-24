@@ -1,7 +1,8 @@
-﻿using System;
+﻿using InnManager.Enums;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
-using InnManager.Enums;
 
 namespace InnManager.Guests
 {
@@ -11,7 +12,7 @@ namespace InnManager.Guests
     /// <remarks>
     /// The Guest class contains properties for storing guest information. It is used to manage guest records within the inn management system.
     /// </remarks>
-    public class Guest
+    public class Guest : INotifyPropertyChanged
     {
         
         public string FirstName { get; set; } = string.Empty;
@@ -35,5 +36,9 @@ namespace InnManager.Guests
         /// Gets or sets the identification number of the guest.
         /// </summary>
         public string IDNumber { get; set; } = string.Empty;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public override string ToString() => $"{LastName}, {FirstName}";
     }
 }

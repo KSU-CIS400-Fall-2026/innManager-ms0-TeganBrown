@@ -41,20 +41,20 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Border BorderBrush="LightGray" BorderThickness="2" Grid.Row="1" Grid.Column="1" CornerRadius="5" Margin="5">
-            <controls:DashboardControl Grid.Row="1" Grid.Column="1"/>
+            <ContentControl x:Name="contentControl" Grid.Row="1" Grid.Column="1"/>
         </Border>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="350" Width="125" Margin="10,10,10,10" Grid.Row="1" Grid.Column="0">
-            <Button Content="Dashboard"/>
-            <Button Content="Rooms"/>
-            <Button Content="Reservations"/>
-            <Button Content="Guests"/>
-            <Button Content="Services"/>
-            <Button Content="Invoices"/>
-            <Button Content="Payments"/>
-            <Button Content="Employees"/>
-            <Button Content="Housekeeping"/>
-            <Button Content="Reports"/>
-            <Button Content="Settings"/>
+            <Button Content="Dashboard" Click="DashboardClick"/>
+            <Button Content="Rooms" Click="RoomsClick"/>
+            <Button Content="Reservations" Click="ReservationsClick"/>
+            <Button Content="Guests" Click="GuestsClick"/>
+            <Button Content="Services" Click="ServicesClick"/>
+            <Button Content="Invoices" Click="InvoicesClick"/>
+            <Button Content="Payments" Click="PaymentsClick"/>
+            <Button Content="Employees" Click="EmployeesClick"/>
+            <Button Content="Housekeeping" Click="HousekeepingClick"/>
+            <Button Content="Reports" Click="ReportsClick"/>
+            <Button Content="Settings" Click="SettingsClick"/>
         </StackPanel>
         <Border BorderBrush="SeaGreen" BorderThickness="2" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="5" Margin="5">
             <DockPanel Margin="0,0,0,0" Background="LightSeaGreen">

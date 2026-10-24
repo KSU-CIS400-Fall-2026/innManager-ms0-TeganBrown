@@ -18,9 +18,22 @@ namespace InnManager.WpFApp.Controls
     /// </summary>
     public partial class ReservationsControl : UserControl
     {
+
+        
+
         public ReservationsControl()
         {
             InitializeComponent();
+        }
+
+        private void AddReservationClick(object sender, RoutedEventArgs e)
+        {
+            Hotel hotel = DataContext as Hotel;
+            AddReservationWindow addReservationWindow = new AddReservationWindow(hotel)
+            {
+                Owner = Window.GetWindow(this)
+            };
+            addReservationWindow.ShowDialog();
         }
     }
 }
