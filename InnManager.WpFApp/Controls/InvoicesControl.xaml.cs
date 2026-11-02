@@ -21,6 +21,7 @@ namespace InnManager.WpFApp.Controls
         public InvoicesControl()
         {
             InitializeComponent();
+            InvoiceViewer.BackAttempt += InvoiceViewerBackAttempt;
         }
 
         private void AddInvoiceClick(object sender, RoutedEventArgs e)
@@ -31,6 +32,29 @@ namespace InnManager.WpFApp.Controls
                 Owner = Window.GetWindow(this)
             };
             addInvoiceWindow.ShowDialog();
+        }
+
+        private void ViewInvoiceClick(object sender, RoutedEventArgs e)
+        {
+            if (InvoicesDataGrid.SelectedItem is Invoice selectedItem)
+            {
+                InvoiceViewer.DataContext = selectedItem;
+
+
+                InvoicesPanel.Visibility = Visibility.Collapsed;
+                InvoiceViewer.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("No Invoice Selected.");
+            }
+        }
+
+        private void InvoiceViewerBackAttempt(object? sender, EventArgs e)
+        {
+            InvoiceViewer.Visibility = Visibility.Collapsed;
+            InvoicesPanel.Visibility = Visibility.Visible;
+            InvoiceViewer.DataContext = null;
         }
     }
 }

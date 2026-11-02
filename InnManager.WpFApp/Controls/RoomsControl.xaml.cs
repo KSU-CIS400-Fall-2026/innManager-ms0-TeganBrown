@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InnManager.WpFApp.Controls.Editors;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,8 @@ namespace InnManager.WpFApp.Controls
         public RoomsControl()
         {
             InitializeComponent();
+            RoomEditor.SaveAttempt += RoomEditorSaveAttempt;
+            RoomEditor.CancelAttempt += RoomEditorCancelAttempt;
         }
 
         public void AddRoomClick(object sender, RoutedEventArgs e)
@@ -31,6 +34,55 @@ namespace InnManager.WpFApp.Controls
                 Owner = Window.GetWindow(this)
             };
             newRoomWindow.ShowDialog();
+        }
+
+        private void EditButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (RoomsDataGrid.SelectedItem is Room selectedItem)
+            {
+                RoomEditor.DataContext = selectedItem;
+
+
+                RoomPanel.Visibility = Visibility.Collapsed;
+                RoomEditor.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("No Room Selected.");
+            }
+        }
+
+        private void RoomEditorSaveAttempt(object? sender, EventArgs e)
+        {
+            CloseRoomEditor();
+        }
+
+        private void RoomEditorCancelAttempt(object? sender, EventArgs e)
+        {
+            CloseRoomEditor();
+        }
+
+        private void CloseRoomEditor()
+        {
+            RoomEditor.Visibility = Visibility.Collapsed;
+            RoomPanel.Visibility = Visibility.Visible;
+            RoomEditor.DataContext = null;
+        }
+
+        private void DeleteRoomClick(object sender, RoutedEventArgs e)
+        {
+            if (RoomsDataGrid.SelectedItem is Room selectedItem)
+            {
+                MessageBoxResult result = MessageBox.Show($"Are you sure you want to delete room {selectedItem.roomNumber}?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ((Hotel)DataContext).Rooms.Remove(selectedItem);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Room Selected.");
+            }
         }
     }
 }

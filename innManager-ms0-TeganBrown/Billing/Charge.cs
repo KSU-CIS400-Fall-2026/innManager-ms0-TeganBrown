@@ -10,10 +10,21 @@ namespace InnManager.Billing
     /// </summary>
     public class Charge : BillingRecord
     {
+        private ChargeCategory _category = ChargeCategory.Miscellaneous;
+
         /// <summary>
         /// Gets or sets the category of the charge, represented by the ChargeCategory enum. This property allows for specifying the type of charge, such as room, dining, room service, etc.
         /// </summary>
-        public ChargeCategory Category { get; set; } = ChargeCategory.Miscellaneous;
+        public ChargeCategory Category
+        {
+            get => _category;
+            set
+            {
+                if (_category == value) return;
+                _category = value;
+                OnPropertyChanged(nameof(Category));
+            }
+        }
         /// <summary>
         /// Gets the signed amount associated with the charge record. For charges, this value is equal to the amount, indicating an increase in the total amount owed by the guest.
         /// </summary>

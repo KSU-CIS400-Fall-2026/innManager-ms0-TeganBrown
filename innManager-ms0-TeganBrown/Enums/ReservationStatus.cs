@@ -7,6 +7,7 @@ namespace InnManager.Enums
     public enum ReservationStatus
     {
         Confirmed,
-        Unconfirmed
+        Unconfirmed,
+        Cancelled
     }
 }

@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InnManager.WpFApp.Controls"
-             mc:Ignorable="d" 
+             xmlns:editor="clr-namespace:InnManager.WpFApp.Controls.Editors"
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Control.Resources>
         <Style TargetType="Button">
@@ -23,7 +24,8 @@
         </Style>
     </Control.Resources>
 
-    <Border Background="#E9FCEE" CornerRadius="5">
+    <Grid>
+    <Border x:Name="HousekeepingPanel" Background="#E9FCEE" CornerRadius="5">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -39,10 +41,10 @@
                     <Button Content="  + Add Task  " Background="DarkGreen" Foreground="White" FontWeight="SemiBold" Click="AddHousekeepingTaskClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Edit  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  Edit  " Background="#E9FCEE" FontWeight="SemiBold" Click="EditButtonClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Delete  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  Delete  " Background="#E9FCEE" FontWeight="SemiBold" Click="DeleteHousekeepingTaskClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Refresh  " Background="#E9FCEE" FontWeight="SemiBold"/>
@@ -56,7 +58,7 @@
                 <TextBlock Text="Total Tasks: 0" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
             </Border>
             <Border Grid.Row="2" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                <DataGrid ItemsSource="{Binding HousekeepingTasks}" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid x:Name="HousekeepingTasksDataGrid" ItemsSource="{Binding HousekeepingTasks}" IsReadOnly="True" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Room Number" Binding="{Binding RoomNumber}" Width="*"/>
                         <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
@@ -69,4 +71,6 @@
             </Border>
         </Grid>
     </Border>
+    <editor:HousekeepingEditControl x:Name="HousekeepingEditor" Visibility="Hidden"/>
+    </Grid>
 </UserControl>

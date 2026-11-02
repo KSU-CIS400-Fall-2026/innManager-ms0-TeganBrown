@@ -21,6 +21,8 @@ namespace InnManager.WpFApp.Controls
         public ServicesControl()
         {
             InitializeComponent();
+            ServiceEditor.SaveAttempt += ServiceEditorAttempt;
+            ServiceEditor.CancelAttempt += ServiceEditorAttempt;
         }
 
         private void AddServiceClick(object sender, RoutedEventArgs e)
@@ -31,6 +33,47 @@ namespace InnManager.WpFApp.Controls
                 Owner = Window.GetWindow(this)
             };
             addServiceWindow.ShowDialog();
+        }
+
+        private void EditButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (ServicesDataGrid.SelectedItem is Service selectedItem)
+            {
+                ServiceEditor.DataContext = selectedItem;
+                ServicePanel.Visibility = Visibility.Collapsed;
+                ServiceEditor.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("No Service Selected.");
+            }
+        }
+
+        private void ServiceEditorAttempt(object? sender, EventArgs e)
+        {
+            ServiceEditor.Visibility = Visibility.Collapsed;
+            ServicePanel.Visibility = Visibility.Visible;
+            ServiceEditor.DataContext = null;
+        }
+
+        private void DeleteServiceClick(object sender, RoutedEventArgs e)
+        {
+            if (ServicesDataGrid.SelectedItem is Service selectedItem)
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    $"Are you sure you want to delete service {selectedItem.ServiceName}?",
+                    "Confirm Delete",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes && DataContext is Hotel hotel)
+                {
+                    hotel.Services.Remove(selectedItem);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Service Selected.");
+            }
         }
     }
 }

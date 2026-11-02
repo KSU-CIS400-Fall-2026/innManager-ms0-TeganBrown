@@ -21,6 +21,7 @@ namespace InnManager.WpFApp.Controls
         public PaymentsControl()
         {
             InitializeComponent();
+            PaymentViewer.BackAttempt += PaymentViewerBackAttempt;
         }
 
         private void AddPaymentClick(object sender, RoutedEventArgs e)
@@ -31,6 +32,27 @@ namespace InnManager.WpFApp.Controls
                 Owner = Window.GetWindow(this)
             };
             addPaymentWindow.ShowDialog();
+        }
+
+        private void ViewPaymentClick(object sender, RoutedEventArgs e)
+        {
+            if (PaymentsDataGrid.SelectedItem is Payment selectedItem)
+            {
+                PaymentViewer.DataContext = selectedItem;
+                PaymentsPanel.Visibility = Visibility.Collapsed;
+                PaymentViewer.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("No Payment Selected.");
+            }
+        }
+
+        private void PaymentViewerBackAttempt(object? sender, EventArgs e)
+        {
+            PaymentViewer.Visibility = Visibility.Collapsed;
+            PaymentsPanel.Visibility = Visibility.Visible;
+            PaymentViewer.DataContext = null;
         }
     }
 }

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InnManager.WpFApp.Controls"
+             xmlns:viewer="clr-namespace:InnManager.WpFApp.Controls.Editors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Control.Resources>
@@ -39,7 +40,7 @@
                     <Button Content="  + New Invoice  " Background="DarkGreen" Foreground="White" FontWeight="SemiBold" Click="AddInvoiceClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  View  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  View  " Background="#E9FCEE" FontWeight="SemiBold" Click="ViewInvoiceClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Download  " Background="#E9FCEE" FontWeight="SemiBold"/>
@@ -53,10 +54,10 @@
             </DockPanel>
 
             <Border Grid.Row="3" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                <TextBlock Text="Total Invoices: 0" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Invoices.Count, StringFormat='Total Invoices: {0}'}" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
             </Border>
-            <Border Grid.Row="2" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                <DataGrid ItemsSource="{Binding Invoices}" IsReadOnly="True" AutoGenerateColumns="False">
+            <Border Grid.Row="2" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1" x:Name="InvoicesPanel">
+                <DataGrid x:Name="InvoicesDataGrid" ItemsSource="{Binding Invoices}" IsReadOnly="True" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Invoice #" Binding="{Binding InvoiceNumber}" Width="*"/>
                         <DataGridTextColumn Header="Guest Name" Binding="{Binding GuestName}" Width="*"/>
@@ -69,6 +70,8 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
+            <viewer:InvoiceEditControl x:Name="InvoiceViewer" Visibility="Collapsed" Grid.ColumnSpan="5"/>
         </Grid>
+        
     </Border>
 </UserControl>

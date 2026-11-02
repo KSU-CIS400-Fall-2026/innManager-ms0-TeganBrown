@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InnManager.WpFApp.Controls"
-             mc:Ignorable="d" 
+             xmlns:viewer="clr-namespace:InnManager.WpFApp.Controls.Editors"
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Control.Resources>
         <Style TargetType="Button">
@@ -25,6 +26,7 @@
 
     <Border Background="#E9FCEE" CornerRadius="5">
         <Grid>
+            <Grid x:Name="PaymentsPanel">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -39,7 +41,7 @@
                     <Button Content="  + New Payment  " Background="DarkGreen" Foreground="White" FontWeight="SemiBold" Click="AddPaymentClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  View  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  View  " Background="#E9FCEE" FontWeight="SemiBold" Click="ViewPaymentClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Receipt  " Background="#E9FCEE" FontWeight="SemiBold"/>
@@ -56,19 +58,22 @@
             </DockPanel>
 
             <Border Grid.Row="3" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                <TextBlock Text="Total Payments: 0" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Payments.Count, StringFormat='Total Payments: {0}'}" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
             </Border>
             <Border Grid.Row="2" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                <DataGrid ItemsSource="{Binding Payments}" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid x:Name="PaymentsDataGrid" ItemsSource="{Binding Payments}" IsReadOnly="True" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Payment Date" Binding="{Binding date}" Width="*"/>
                         <DataGridTextColumn Header="Method" Binding="{Binding PaymentMethod}" Width="*"/>
                         <DataGridTextColumn Header="Amount ($)" Binding="{Binding Amount}" Width="*"/>
                         <DataGridTextColumn Header="Processed" Binding="{Binding IsProcessed}" Width="*"/>
                         <DataGridTextColumn Header="Reference #" Binding="{Binding RefrenceNumber}" Width="*"/>
-                    </DataGrid.Columns>
+                            <DataGridTextColumn Header="Refunded" Binding="{Binding IsRefunded}" Width="*"/>
+                        </DataGrid.Columns>
                 </DataGrid>
             </Border>
+            </Grid>
+            <viewer:PaymentViewControl x:Name="PaymentViewer" Visibility="Collapsed"/>
         </Grid>
     </Border>
 </UserControl>

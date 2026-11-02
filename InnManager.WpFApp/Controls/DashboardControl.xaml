@@ -48,7 +48,7 @@
                     <TextBlock Text="Recent Reservations" FontSize="20" Grid.Row="0" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
 
                     <Border Grid.Row="1" Margin="5" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
-                        <DataGrid ItemsSource="{Binding Reservations}" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid x:Name="DashboardReservationsDataGrid" ItemsSource="{Binding Reservations}" IsReadOnly="True" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Guest" Binding="{Binding GuestName}" Width="2*"/>
                                 <DataGridTextColumn Header="Room" Binding="{Binding RoomNumber}" Width="*"/>

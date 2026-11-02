@@ -21,6 +21,8 @@ namespace InnManager.WpFApp.Controls
         public GuestsControl()
         {
             InitializeComponent();
+            GuestEditor.SaveAttempt += GuestEditorAttempt;
+            GuestEditor.CancelAttempt += GuestEditorAttempt;
         }
 
         private void AddGuestClick(object sender, RoutedEventArgs e)
@@ -31,6 +33,47 @@ namespace InnManager.WpFApp.Controls
                 Owner = Window.GetWindow(this)
             };
             addGuestWindow.ShowDialog();
+        }
+
+        private void EditButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (GuestsDataGrid.SelectedItem is Guest selectedItem)
+            {
+                GuestEditor.DataContext = selectedItem;
+                GuestPanel.Visibility = Visibility.Collapsed;
+                GuestEditor.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("No Guest Selected.");
+            }
+        }
+
+        private void GuestEditorAttempt(object? sender, EventArgs e)
+        {
+            GuestEditor.Visibility = Visibility.Collapsed;
+            GuestPanel.Visibility = Visibility.Visible;
+            GuestEditor.DataContext = null;
+        }
+
+        private void DeleteGuestClick(object sender, RoutedEventArgs e)
+        {
+            if (GuestsDataGrid.SelectedItem is Guest selectedItem)
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    $"Are you sure you want to delete guest {selectedItem.FirstName} {selectedItem.LastName}?",
+                    "Confirm Delete",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes && DataContext is Hotel hotel)
+                {
+                    hotel.Guests.Remove(selectedItem);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Guest Selected.");
+            }
         }
     }
 }

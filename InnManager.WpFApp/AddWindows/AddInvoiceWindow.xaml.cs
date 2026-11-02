@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -43,7 +44,13 @@ namespace InnManager.WpFApp.AddWindows
 
             if (ReservationComboBox.SelectedItem != null)
             {
-                invoice.RoomNumber = ((Reservation)ReservationComboBox.SelectedItem).RoomNumber;
+                Reservation reservation = (Reservation)ReservationComboBox.SelectedItem;
+                invoice.RoomNumber = reservation.Room.roomNumber;
+                invoice.BillingRecords.Add(new Charge()
+                {
+                    Amount = reservation.Room.NightlyRate * (reservation.CheckOutDate.DayOfYear - reservation.CheckInDate.DayOfYear)
+                });
+                
             }
             else
             {
@@ -71,9 +78,10 @@ namespace InnManager.WpFApp.AddWindows
                 return;
             }
 
-            invoice.InvoiceNumber = "INV-" + ((Guest)GuestComboBox.SelectedItem).ToString().Substring(0,2) + "-" + ((Guest)GuestComboBox.SelectedItem).IDNumber.Substring(((Guest)GuestComboBox.SelectedItem).IDNumber.Length-3, 3) + "-" + ((Reservation)ReservationComboBox.SelectedItem).RoomNumber;
+            invoice.InvoiceNumber = "INV-" + ((Guest)GuestComboBox.SelectedItem).ToString().Substring(0,2) + "-" + ((Guest)GuestComboBox.SelectedItem).IDNumber.Substring(((Guest)GuestComboBox.SelectedItem).IDNumber.Length-3, 3) + "-" + ((Reservation)ReservationComboBox.SelectedItem).Room.ToString();
 
             _hotel.Invoices.Add(invoice);
+            
 
             this.Close();
         }

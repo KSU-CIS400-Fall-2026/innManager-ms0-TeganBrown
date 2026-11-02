@@ -54,8 +54,7 @@ namespace InnManager.WpFApp.AddWindows
 
             if (StatusComboBox.SelectedItem != null)
             {
-                if ((HousekeepingTaskStatus)StatusComboBox.SelectedItem == HousekeepingTaskStatus.NotCompleted) task.Status = "Not Complete";
-                else task.Status = "Complete";
+                task.IsCompleted = (HousekeepingTaskStatus)StatusComboBox.SelectedItem == HousekeepingTaskStatus.Completed;
             }
             else
             {

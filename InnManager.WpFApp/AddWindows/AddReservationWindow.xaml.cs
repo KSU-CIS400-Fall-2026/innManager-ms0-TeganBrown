@@ -43,7 +43,7 @@ namespace InnManager.WpFApp.AddWindows
 
             if (RoomComboBox.SelectedItem != null)
             {
-                reservation.RoomNumber = (string)RoomComboBox.SelectedItem.ToString();
+                reservation.Room = (Room)RoomComboBox.SelectedItem;
             }
             else
             {
@@ -76,11 +76,11 @@ namespace InnManager.WpFApp.AddWindows
                 MessageBox.Show("Please enter a valid Number of Guests.");
                 return;
             }
+            reservation.NumberOfGuests = guests;
 
             if (StatusComboBox.SelectedItem != null)
             {
-                if ((ReservationStatus)StatusComboBox.SelectedItem == ReservationStatus.Confirmed) reservation.Status = "Confirmed";
-                else reservation.Status = "Unconfirmed";
+                reservation.Status = StatusComboBox.SelectedItem.ToString();
             }
             else
             {
@@ -88,7 +88,7 @@ namespace InnManager.WpFApp.AddWindows
                 return;
             }
 
-            reservation.ReservationNumber = "RES-" + reservation.GuestName.Substring(0, 2).ToUpper() + "-" + ((Guest)GuestComboBox.SelectedItem).IDNumber.Substring(((Guest)GuestComboBox.SelectedItem).IDNumber.Length - 3, 3) + "-" + reservation.RoomNumber;
+            reservation.ReservationNumber = "RES-" + reservation.GuestName.Substring(0, 2).ToUpper() + "-" + ((Guest)GuestComboBox.SelectedItem).IDNumber.Substring(((Guest)GuestComboBox.SelectedItem).IDNumber.Length - 3, 3) + "-" + reservation.Room.ToString();
 
             _hotel.Reservations.Add(reservation);
 

@@ -8,6 +8,9 @@ using InnManager.Rooms;
 using InnManager.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace InnManager.Hotels
@@ -15,17 +18,39 @@ namespace InnManager.Hotels
     /// <summary>
     /// Represents a hotel in the inn management system.
     /// </summary>
-    public class Hotel
+    public class Hotel : INotifyPropertyChanged
     {
+        private string _name = string.Empty;
+        private HotelType _type;
+        private readonly HashSet<Room> _trackedRooms = new();
+
         #region Properties
         /// <summary>
         /// Gets or sets the name of the hotel.
         /// </summary>
-        public string Name { get; init; }
+        public string Name
+        {
+            get => _name;
+            init
+            {
+                if (_name == value) return;
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
         /// <summary>
         /// Gets or sets the type of the hotel, represented by the HotelType enum. This property allows for categorization of hotels into predefined types such as Boutique, Resort, Business, etc.
         /// </summary>
-        public HotelType Type { get; init; }
+        public HotelType Type
+        {
+            get => _type;
+            init
+            {
+                if (_type == value) return;
+                _type = value;
+                OnPropertyChanged(nameof(Type));
+            }
+        }
         /// <summary>
         /// Gets the list of rooms in the hotel.
         /// </summary>
@@ -104,6 +129,43 @@ namespace InnManager.Hotels
         {
             Name = name;
             Type = type;
+            Rooms.CollectionChanged += OnRoomsCollectionChanged;
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnRoomsCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            foreach (Room room in _trackedRooms.Except(Rooms).ToList())
+            {
+                room.PropertyChanged -= OnRoomPropertyChanged;
+                _trackedRooms.Remove(room);
+            }
+
+            foreach (Room room in Rooms)
+            {
+                if (_trackedRooms.Add(room))
+                {
+                    room.PropertyChanged += OnRoomPropertyChanged;
+                }
+            }
+
+            OnPropertyChanged(nameof(AvailableRoomCount));
+            OnPropertyChanged(nameof(OccupiedRoomCount));
+        }
+
+        private void OnRoomPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Room.Status) || string.IsNullOrEmpty(e.PropertyName))
+            {
+                OnPropertyChanged(nameof(AvailableRoomCount));
+                OnPropertyChanged(nameof(OccupiedRoomCount));
+            }
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -100,6 +100,8 @@ namespace InnManager.WpFApp.AddWindows
                 return;
             }
 
+            employee.EmployeeID = "EMP-" + employee.LastName.Substring(0, 2).ToUpper() + "-" + employee.PhoneNumber.Substring(employee.PhoneNumber.Length - 3, 3);
+
             _hotel.Employees.Add(employee);
 
             this.Close();
