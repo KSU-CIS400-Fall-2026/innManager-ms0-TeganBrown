@@ -46,9 +46,7 @@
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Delete  " Background="#E9FCEE" FontWeight="SemiBold" Click="DeleteServiceClick"/>
                 </Border>
-                <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Refresh  " Background="#E9FCEE" FontWeight="SemiBold"/>
-                </Border>
+                
                 <Border CornerRadius="5" Margin="7,7">
                     <TextBox Text="Search service name or category..." Foreground="Gray" VerticalContentAlignment="Center"/>
                 </Border>

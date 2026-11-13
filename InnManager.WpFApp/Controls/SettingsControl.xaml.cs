@@ -22,5 +22,23 @@ namespace InnManager.WpFApp.Controls
         {
             InitializeComponent();
         }
+
+        private void HotelInfoClick(object sender, RoutedEventArgs e)
+        {
+            HotelInfo hotelInfo = new HotelInfo();
+            SettingsContentControl.Content = hotelInfo;
+        }
+
+        private void ReservationBillingClick(object sender, RoutedEventArgs e)
+        {
+            ReservationBilling reservationBilling = new ReservationBilling();
+            SettingsContentControl.Content = reservationBilling;
+        }
+
+        private void AccountClick(object sender, RoutedEventArgs e)
+        {
+            Account account = new Account();
+            SettingsContentControl.Content = account;
+        }
     }
 }

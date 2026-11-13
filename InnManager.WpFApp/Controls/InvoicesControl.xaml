@@ -45,9 +45,7 @@
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Download  " Background="#E9FCEE" FontWeight="SemiBold"/>
                 </Border>
-                <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Refresh  " Background="#E9FCEE" FontWeight="SemiBold"/>
-                </Border>
+                
                 <Border CornerRadius="5" Margin="7,7">
                     <TextBox Text="Search invoice number, guest name, or room number..." Foreground="Gray" VerticalContentAlignment="Center"/>
                 </Border>

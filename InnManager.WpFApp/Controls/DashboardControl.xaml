@@ -24,22 +24,22 @@
             <Border CornerRadius="5" Grid.Row="1" Grid.Column="0" Background="LightGray" Margin="15" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Total Rooms" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="---" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Rooms.Count, StringFormat={}{0}}" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
                 </StackPanel>
             </Border>
             <Border CornerRadius="5" Grid.Row="1" Grid.Column="1" Background="LightGreen" Margin="15" BorderBrush="Green" BorderThickness="1">
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Available Rooms" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="---" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding AvailableRoomCount, StringFormat={}{0}}" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
                 </StackPanel>
             </Border>
             <Border CornerRadius="5" Grid.Row="1" Grid.Column="2" Background="LightCoral" Margin="15" BorderBrush="DarkRed" BorderThickness="1">
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Occupied Rooms" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="---" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding OccupiedRoomCount, StringFormat={}{0}}" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
                 </StackPanel>
             </Border>
-            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="15" Background="GhostWhite" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
+            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15" Background="GhostWhite" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -50,6 +50,7 @@
                     <Border Grid.Row="1" Margin="5" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
                         <DataGrid x:Name="DashboardReservationsDataGrid" ItemsSource="{Binding Reservations}" IsReadOnly="True" AutoGenerateColumns="False">
                             <DataGrid.Columns>
+                                <DataGridTextColumn Header="Reservation #" Binding="{Binding ReservationNumber}" Width="2*"/>
                                 <DataGridTextColumn Header="Guest" Binding="{Binding GuestName}" Width="2*"/>
                                 <DataGridTextColumn Header="Room" Binding="{Binding RoomNumber}" Width="*"/>
                                 <DataGridTextColumn Header="Check-In" Binding="{Binding CheckInDate}" Width="2*"/>
@@ -60,43 +61,7 @@
                     </Border>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="2" Margin="15" Background="GhostWhite" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="4*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Room Status" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,0,0,0" Grid.Row="0"/>
-                    <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Margin="5">
-                        <StackPanel>
-                            <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
-                                <DockPanel>
-                                    <TextBlock Text="Available" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="10,0,0,0" FontWeight="DemiBold"/>
-                                    <TextBlock Text="---" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" Margin="0,0,10,0" FontWeight="DemiBold"/>
-                                </DockPanel>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
-                                <DockPanel>
-                                    <TextBlock Text="Occupied" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="10,0,0,0" FontWeight="DemiBold"/>
-                                    <TextBlock Text="---" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" Margin="0,0,10,0" FontWeight="DemiBold"/>
-                                </DockPanel>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
-                                <DockPanel>
-                                    <TextBlock Text="Out of Service" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="10,0,0,0" FontWeight="DemiBold"/>
-                                    <TextBlock Text="---" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" Margin="0,0,10,0" FontWeight="DemiBold"/>
-                                </DockPanel>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
-                                <DockPanel>
-                                    <TextBlock Text="Maintenance" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="10,0,0,0" FontWeight="DemiBold"/>
-                                    <TextBlock Text="---" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" Margin="0,0,10,0" FontWeight="DemiBold"/>
-                                </DockPanel>
-                            </Border>
-                        </StackPanel>
-                    </Border>
-                </Grid>
-            </Border>
+            
         </Grid>
     </Border>
 </UserControl>

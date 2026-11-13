@@ -46,9 +46,7 @@
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Delete  " Background="#E9FCEE" FontWeight="SemiBold" Click="DeleteRoomClick"/>
                 </Border>
-                <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Refresh  " Background="#E9FCEE" FontWeight="SemiBold"/>
-                </Border>
+                
                 <Border CornerRadius="5" Margin="7,7">
                     <TextBox Text="Search room number..." Foreground="Gray" VerticalContentAlignment="Center"/>
                 </Border>
@@ -67,8 +65,8 @@
                         <DataGridTextColumn Header="Rate ($)" Binding="{Binding NightlyRate}" Width="*"/>
                         <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
                         <DataGridTextColumn Header="Is Clean" Binding="{Binding IsClean}" Width="*"/>
-                        <DataGridTextColumn Header="Has Balcony" Binding="{Binding HasBalcony}" Width="*"/>
-                    </DataGrid.Columns>
+                            <DataGridTextColumn Header="Has Balcony" Binding="{Binding HasBalcony}" Width="*"/>
+                        </DataGrid.Columns>
                 </DataGrid>
             </Border>
 

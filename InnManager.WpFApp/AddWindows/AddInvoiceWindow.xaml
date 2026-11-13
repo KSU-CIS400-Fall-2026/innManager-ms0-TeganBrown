@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InnManager.WpFApp.AddWindows"
         mc:Ignorable="d"
-        Title="AddInvoiceWindow" Height="300" Width="325">
+        Title="AddInvoiceWindow" Height="350" Width="400">
     <Grid Background="#E9FCEE">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -48,7 +48,23 @@
 
         <StackPanel Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Margin="10,5,10,5" >
             <TextBlock Text="Due Date:" VerticalAlignment="Center" Margin="0,0,0,0" DockPanel.Dock="Top" FontSize="10"/>
-            <DatePicker x:Name="DueDatePicker" VerticalAlignment="Center" Margin="5,5,0,0" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+                <DatePicker x:Name="DueDatePicker" VerticalAlignment="Center" Margin="1" Background="White" BorderBrush="White"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="0"  Grid.ColumnSpan="2" Margin="10,5,10,5" >
+            <TextBlock Text="Services:" VerticalAlignment="Center" Margin="0,0,0,0" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+                <DataGrid ItemsSource="{Binding Services}" AutoGenerateColumns="False" x:Name="ServicesDataGrid">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="Select" Width="1*" x:Name="SelectColumn"/>
+                        <DataGridTextColumn Header="Service Name" Width="3*" Binding="{Binding ServiceName}"/>
+                        <DataGridTextColumn Header="Category" Width="3*" Binding="{Binding Category}"/>
+                        <DataGridTextColumn Header="Price ($)" Width="2*" Binding="{Binding Price}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
         </StackPanel>
 
         <Border Grid.Row="5" Grid.ColumnSpan="2" BorderBrush="Gray" BorderThickness="0,1,0,0"/>
@@ -56,5 +72,8 @@
             <Button Content="Cancel" Width="90" Height="20" BorderBrush="Gray" Click="CancelButtonClick" Margin="5" DockPanel.Dock="Right"/>
             <Button Content="Add Invoice" Width="90" Height="20" Background="#70EB95" BorderBrush="Green" Click="AddInvoiceButtonClick"/>
         </DockPanel>
+        
+        
+        
     </Grid>
 </Window>

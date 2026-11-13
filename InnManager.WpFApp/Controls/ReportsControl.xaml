@@ -36,24 +36,27 @@
             </Border>
             <DockPanel Grid.Row="1" LastChildFill="False">
                 <Border CornerRadius="5" Margin="10,7">
-                    <Button Content="  Occupancy Report  " Background="DarkGreen" Foreground="White" FontWeight="SemiBold"/>
+                    <Button Content="  Occupancy Report  " Background="DarkGreen" Foreground="White" FontWeight="SemiBold" Click="OccupancyReportClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Revenue Report  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  Revenue Report  " Background="#E9FCEE" FontWeight="SemiBold" Click="RevenueReportClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Guest Report  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  Guest Report  " Background="#E9FCEE" FontWeight="SemiBold" Click="GuestReportClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Housekeeping Report  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  Housekeeping Report  " Background="#E9FCEE" FontWeight="SemiBold" Click="HousekeepingReportClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Reservation Report  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  Reservation Report  " Background="#E9FCEE" FontWeight="SemiBold" Click="ReservationReportClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Employee Report  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  Employee Report  " Background="#E9FCEE" FontWeight="SemiBold" Click="EmployeeReportClick"/>
                 </Border>
             </DockPanel>
+            <Border Margin="10" Grid.Row="2" CornerRadius="5" BorderThickness="1" BorderBrush="Gray" x:Name="ReportContent">
+                <ContentControl x:Name="ReportContentControl"/>
+            </Border>
         </Grid>
     </Border>
 </UserControl>

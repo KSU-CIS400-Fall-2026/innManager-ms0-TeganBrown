@@ -36,15 +36,20 @@
             </Border>
             <DockPanel Grid.Row="1" LastChildFill="False">
                 <Border CornerRadius="5" Margin="10,7" Width="250">
-                    <Button Content="  Hotel Information  " Background="#E9FCEE" FontWeight="SemiBold" FontSize="20"/>
+                    <Button Content="  Hotel Information  " Background="#E9FCEE" FontWeight="SemiBold" FontSize="20" Click="HotelInfoClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7" Width="250">
-                    <Button Content="  Reservation and Billing  " Background="#E9FCEE" FontWeight="SemiBold" FontSize="20"/>
+                    <Button Content="  Reservation and Billing  " Background="#E9FCEE" FontWeight="SemiBold" FontSize="20" Click="ReservationBillingClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7" Width="250">
-                    <Button Content="  Account  " Background="#E9FCEE" FontWeight="SemiBold" FontSize="20"/>
+                    <Button Content="  Account  " Background="#E9FCEE" FontWeight="SemiBold" FontSize="20" Click="AccountClick"/>
                 </Border>
             </DockPanel>
+
+            <Border Grid.Row="2" Margin="10" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <ContentControl x:Name="SettingsContentControl"/>
+            </Border>
+            
         </Grid>
     </Border>
 </UserControl>

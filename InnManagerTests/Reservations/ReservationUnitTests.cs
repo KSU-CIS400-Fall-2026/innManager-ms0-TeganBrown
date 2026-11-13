@@ -18,7 +18,7 @@ namespace InnManagerTests.Reservations
         {
             Reservation reservation = new Reservation();
             Assert.Equal(reservation.GuestName, string.Empty);
-            Assert.Equal(reservation.RoomNumber, string.Empty);
+            Assert.Equal(reservation.Room.roomNumber, string.Empty);
             Assert.Equal(reservation.CheckInDate.Date, DateTime.Now.Date);
             Assert.Equal(reservation.CheckOutDate.Date, DateTime.Now.Date);
             Assert.False(reservation.IsCheckedOut);

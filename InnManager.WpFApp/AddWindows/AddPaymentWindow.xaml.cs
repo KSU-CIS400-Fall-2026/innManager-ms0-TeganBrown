@@ -34,9 +34,11 @@ namespace InnManager.WpFApp.AddWindows
         private void AddPaymentButtonClick(object sender, RoutedEventArgs e)
         {
             Payment payment = new Payment();
+            payment.IsProcessed = true;
 
             if (InvoiceComboBox.SelectedItem != null)
             {
+                payment.Invoice = (Invoice)InvoiceComboBox.SelectedItem;
                 ((Invoice)InvoiceComboBox.SelectedItem).BillingRecords.Add(payment);
             }
             else
@@ -77,6 +79,7 @@ namespace InnManager.WpFApp.AddWindows
             }
 
             payment.RefrenceNumber = "PAY-" + ((Invoice)InvoiceComboBox.SelectedValue).GuestName.Substring(0, 2).ToUpper() + "-" + ((Invoice)InvoiceComboBox.SelectedValue).Guest.GuestID.Substring(((Invoice)InvoiceComboBox.SelectedValue).Guest.GuestID.Length - 3, 3) + "-" + ((Invoice)InvoiceComboBox.SelectedValue).RoomNumber;
+            payment.date = DateTime.Now;
 
             _hotel.Payments.Add(payment);
 

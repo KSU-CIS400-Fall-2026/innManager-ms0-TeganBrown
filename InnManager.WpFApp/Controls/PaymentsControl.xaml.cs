@@ -22,6 +22,7 @@ namespace InnManager.WpFApp.Controls
         {
             InitializeComponent();
             PaymentViewer.BackAttempt += PaymentViewerBackAttempt;
+            PaymentReciptViewer.BackAttempt += PaymentReciptViewerBackAttempt;
         }
 
         private void AddPaymentClick(object sender, RoutedEventArgs e)
@@ -53,6 +54,26 @@ namespace InnManager.WpFApp.Controls
             PaymentViewer.Visibility = Visibility.Collapsed;
             PaymentsPanel.Visibility = Visibility.Visible;
             PaymentViewer.DataContext = null;
+        }
+
+        private void ReceiptButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (PaymentsDataGrid.SelectedItem is not Payment selectedPayment)
+            {
+                MessageBox.Show("No Payment Selected.");
+                return;
+            }
+            Hotel hotel = DataContext as Hotel;
+            PaymentReciptViewer.DataContext = new ViewModels.ReciptViewModel(hotel.Name, selectedPayment.RefrenceNumber, selectedPayment.Invoice.InvoiceNumber, selectedPayment.Invoice.GuestName, selectedPayment.Invoice.RoomNumber, selectedPayment.Invoice.TotalCharges, selectedPayment.Amount, selectedPayment.date, selectedPayment.PaymentMethod);
+            PaymentsPanel.Visibility = Visibility.Collapsed;
+            PaymentReciptViewer.Visibility = Visibility.Visible;
+        }
+
+        private void PaymentReciptViewerBackAttempt(object? sender, EventArgs e)
+        {
+            PaymentReciptViewer.Visibility = Visibility.Collapsed;
+            PaymentsPanel.Visibility = Visibility.Visible;
+            PaymentReciptViewer.DataContext = null;
         }
     }
 }

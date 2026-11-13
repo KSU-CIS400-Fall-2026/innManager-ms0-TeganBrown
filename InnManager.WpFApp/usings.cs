@@ -12,8 +12,11 @@ global using InnManager.Enums;
 global using InnManager.Hotels;
 global using System.ComponentModel;
 global using InnManager.WpFApp.AddWindows;
+global using InnManager.WpFApp.Reports;
+global using InnManager.WpFApp.Settings;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 
 

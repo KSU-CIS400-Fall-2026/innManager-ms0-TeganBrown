@@ -46,9 +46,7 @@
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Delete  " Background="#E9FCEE" FontWeight="SemiBold" Click="DeleteHousekeepingTaskClick"/>
                 </Border>
-                <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Refresh  " Background="#E9FCEE" FontWeight="SemiBold"/>
-                </Border>
+                
                 <Border CornerRadius="5" Margin="7,7">
                     <TextBox Text="Search room number, description, or staff..." Foreground="Gray" VerticalContentAlignment="Center"/>
                 </Border>

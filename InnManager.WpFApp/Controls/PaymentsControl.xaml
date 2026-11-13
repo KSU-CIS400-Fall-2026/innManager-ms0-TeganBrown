@@ -44,14 +44,12 @@
                     <Button Content="  View  " Background="#E9FCEE" FontWeight="SemiBold" Click="ViewPaymentClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Receipt  " Background="#E9FCEE" FontWeight="SemiBold"/>
+                    <Button Content="  Receipt  " Background="#E9FCEE" FontWeight="SemiBold" Click="ReceiptButtonClick"/>
                 </Border>
                 <Border CornerRadius="5" Margin="7,7">
                     <Button Content="  Refund  " Background="#E9FCEE" FontWeight="SemiBold"/>
                 </Border>
-                <Border CornerRadius="5" Margin="7,7">
-                    <Button Content="  Refresh  " Background="#E9FCEE" FontWeight="SemiBold"/>
-                </Border>
+                
                 <Border CornerRadius="5" Margin="7,7">
                     <TextBox Text="Search invoice number, guest name, or refrence..." Foreground="Gray" VerticalContentAlignment="Center"/>
                 </Border>
@@ -74,6 +72,7 @@
             </Border>
             </Grid>
             <viewer:PaymentViewControl x:Name="PaymentViewer" Visibility="Collapsed"/>
+            <local:PaymentReciptControl x:Name="PaymentReciptViewer" Visibility="Collapsed"/>
         </Grid>
     </Border>
 </UserControl>

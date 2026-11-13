@@ -42,54 +42,53 @@
             <TextBlock Text="View Invoice" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
         </Border>
 
-        <DockPanel Grid.Row="1" Grid.Column="0" Margin="10,5,10,5">
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,5,10,5">
             <TextBlock Text="Guest:" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
-            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,0" Background="White">
                 <TextBlock x:Name="GuestTextBlock" Margin="1" Text="{Binding GuestName, Mode=TwoWay}"/>
             </Border>
-        </DockPanel>
-
-        <DockPanel Grid.Row="2" Grid.Column="0" Margin="10,5,10,5">
-            <TextBlock Text="Room Number:" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
-            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+            <TextBlock Text="Room Number:" VerticalAlignment="Center" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,0" Background="White">
                 <TextBlock x:Name="RoomNumberTextBlock" Margin="1" Text="{Binding RoomNumber, Mode=TwoWay}"/>
             </Border>
-        </DockPanel>
+        </StackPanel>
 
-        <DockPanel Grid.Row="1" Grid.Column="1" Margin="10,5,10,5">
-            <TextBlock Text="Invoice Date:" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
-            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
-                <TextBlock x:Name="InvoiceDateTextBlock" Margin="1" Background="White" Text="{Binding InvoiceDate, Mode=TwoWay}"/>
-            </Border>
-        </DockPanel>
-
-        <DockPanel Grid.Row="2" Grid.Column="1" Margin="10,5,10,5">
-            <TextBlock Text="Due Date:" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
-            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
-                <TextBlock x:Name="DueDateTextBlock" Margin="1" Text="{Binding DueDate, Mode=TwoWay}"/>
-            </Border>
-        </DockPanel>
-
-        <DockPanel Grid.Row="3" Grid.Column="1" Margin="10,5,10,5">
-            <TextBlock Text="Invoice #:" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
-            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
-                <TextBlock x:Name="InvoiceNumberTextBlock" Margin="1" Text="{Binding InvoiceNumber, Mode=TwoWay}"/>
-            </Border>
-        </DockPanel>
-
-        <DockPanel Grid.Row="3" Grid.Column="0" Margin="10,5,10,5">
-            <TextBlock Text="Total ($):" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
-            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="10,5,10,5">
+            <TextBlock Text="Total ($):" VerticalAlignment="Center" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,0" Background="White">
                 <TextBlock x:Name="TotalAmountTextBlock" Margin="1" Text="{Binding TotalAmount, Mode=TwoWay}"/>
             </Border>
-        </DockPanel>
-
-        <DockPanel Grid.Row="4" Grid.Column="0" Margin="10,5,10,5">
             <TextBlock Text="Paid ($):" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
-            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5,0,0" Background="White">
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,0" Background="White">
                 <TextBlock x:Name="PaidAmountTextBlock" Margin="1" Text="{Binding TotalPayments, Mode=TwoWay}"/>
             </Border>
-        </DockPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,5,10,5">
+            <TextBlock Text="Invoice Date:" VerticalAlignment="Center" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,0" Background="White">
+                <TextBlock x:Name="InvoiceDateTextBlock" Margin="1" Background="White" Text="{Binding InvoiceDate, Mode=TwoWay}"/>
+            </Border>
+            <TextBlock Text="Due Date:" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,0" Background="White">
+                <TextBlock x:Name="DueDateTextBlock" Margin="1" Text="{Binding DueDate, Mode=TwoWay}"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="10,5,10,5">
+            <TextBlock Text="Invoice #:" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,0" Background="White">
+                <TextBlock x:Name="InvoiceNumberTextBlock" Margin="1" Text="{Binding InvoiceNumber, Mode=TwoWay}"/>
+            </Border>
+            <TextBlock Text="Status:" VerticalAlignment="Center" DockPanel.Dock="Top" FontSize="10"/>
+            <Border CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,0" Background="White">
+                <TextBlock x:Name="StatusTextBlock" Margin="1" Text="{Binding Status, Mode=TwoWay}"/>
+            </Border>
+        </StackPanel>
+
+        <Border Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Margin="15" Background="White">
+            
+        </Border>
 
         <Border Grid.Row="5" Grid.ColumnSpan="2" BorderBrush="Gray" BorderThickness="0,1,0,0"/>
         <DockPanel Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Right">

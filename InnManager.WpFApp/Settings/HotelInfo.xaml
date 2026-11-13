@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="InnManager.WpFApp.Settings.HotelInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InnManager.WpFApp.Settings"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Background="#E9FCEE" CornerRadius="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="0,0,0,1" BorderBrush="Gray">
+                <TextBlock FontSize="30" FontWeight="Bold" VerticalAlignment="Center" Margin="10">Hotel Information</TextBlock>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="5">
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">Hotel Name:</TextBlock>
+                        <TextBox x:Name="HotelNameTextBox" Width="200" Margin="25,0,0,0" VerticalContentAlignment="Center" FontSize="15" Text="{Binding Name, Mode=TwoWay}"/>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">Hotel Type:</TextBlock>
+                        <ComboBox x:Name="TypeComboBox" Width="200" Margin="40,0,0,0" VerticalContentAlignment="Center" FontSize="15" SelectedItem="{Binding Type, Mode=TwoWay}"/>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">Phone Number:</TextBlock>
+                        <TextBox x:Name="PhoneTextBox" Width="200" Margin="0,0,0,0" VerticalContentAlignment="Center" FontSize="15" IsEnabled="False">123-456-7890</TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">Address:</TextBlock>
+                        <TextBox x:Name="AddressTextBox" Width="200" Margin="68,0,0,0" VerticalContentAlignment="Center" FontSize="15" IsEnabled="False">123 Main St.</TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">City:</TextBlock>
+                        <TextBox x:Name="CityTextBox" Width="200" Margin="105,0,0,0" VerticalContentAlignment="Center" FontSize="15" IsEnabled="False">Topeka</TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">State/Province:</TextBlock>
+                        <TextBox x:Name="StateTextBox" Width="200" Margin="10,0,0,0" VerticalContentAlignment="Center" FontSize="15" IsEnabled="False">KS</TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">Postal Code:</TextBlock>
+                        <TextBox x:Name="PostalCodeTextBox" Width="200" Margin="33,0,0,0" VerticalContentAlignment="Center" FontSize="15" IsEnabled="False">66612</TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">Email:</TextBlock>
+                        <TextBox x:Name="EmailTextBox" Width="200" Margin="90,0,0,0" VerticalContentAlignment="Center" FontSize="15" IsEnabled="False">info@hotel.com</TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">Website:</TextBlock>
+                        <TextBox x:Name="WebsiteTextBox" Width="200" Margin="70,0,0,0" VerticalContentAlignment="Center" FontSize="15" IsEnabled="False">www.hotel.com</TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="2">
+                        <TextBlock FontSize="20">Description:</TextBlock>
+                        <TextBox x:Name="DescriptionTextBox" Width="500" Height="50" Margin="32,0,0,0" FontSize="15" IsEnabled="False">A beautiful hotel in the heart of the city.</TextBox>
+                    </DockPanel>
+                </StackPanel>
+            </Grid>
+
+            <Border BorderThickness="0,1,0,0" BorderBrush="Gray" Grid.Row="2">
+                <DockPanel HorizontalAlignment="Right">
+                    <Button Foreground="White" Background="Green" FontWeight="SemiBold" Margin="10" Width="90" Click="SaveClick">  Save Changes  </Button>
+                    <Button FontWeight="SemiBold" Margin="10" Width="50" Click="CancelClick">Cancel</Button>
+                </DockPanel>
+            </Border>
+
+        </Grid>
+    </Border>
+</UserControl>
+
+ 

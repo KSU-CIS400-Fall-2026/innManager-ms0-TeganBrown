@@ -25,11 +25,13 @@ namespace InnManager.WpFApp.AddWindows
             _hotel = hotel;
             GuestComboBox.ItemsSource = _hotel.Guests;
             ReservationComboBox.ItemsSource = _hotel.Reservations;
+            ServicesDataGrid.ItemsSource = _hotel.Services;
         }
 
         private void AddInvoiceButtonClick(object sender, RoutedEventArgs e)
         {
             Invoice invoice = new Invoice();
+            decimal tax = 1 + _hotel.TaxRate/100;
 
             if (GuestComboBox.SelectedItem != null)
             {
@@ -48,14 +50,29 @@ namespace InnManager.WpFApp.AddWindows
                 invoice.RoomNumber = reservation.Room.roomNumber;
                 invoice.BillingRecords.Add(new Charge()
                 {
-                    Amount = reservation.Room.NightlyRate * (reservation.CheckOutDate.DayOfYear - reservation.CheckInDate.DayOfYear)
+                    Amount = reservation.Room.NightlyRate * (reservation.CheckOutDate.DayOfYear - reservation.CheckInDate.DayOfYear),
+                    Category = ChargeCategory.Room,
+                    IsProcessed = true
                 });
-                
             }
             else
             {
                 MessageBox.Show("Please select a Reservation.");
                 return;
+            }
+
+            foreach (object s in ServicesDataGrid.Items)
+            {
+                if (SelectColumn.GetCellContent(s) is CheckBox checkBox && checkBox.IsChecked == true)
+                {
+                    Service service = (Service)s;
+                    invoice.BillingRecords.Add(new Charge()
+                    {
+                        Amount = service.Price,
+                        Category = (ChargeCategory)Enum.Parse(typeof(ChargeCategory), service.Category.ToString()),
+                        IsProcessed = true
+                    });
+                }
             }
 
             if (InvoiceDatePicker.SelectedDate.HasValue)
