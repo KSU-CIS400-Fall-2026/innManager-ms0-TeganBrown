@@ -119,6 +119,28 @@ namespace InnManager.Hotels
                 return count;
             }
         }
+        
+        private decimal _taxRate = 8.5m; // Default tax rate of 8.5%
+
+        /// <summary>
+        /// The sales tax rate used for calculations.
+        /// </summary>
+        public decimal TaxRate 
+        { 
+            get
+            {
+                return _taxRate;
+            }
+            set
+            {
+                _taxRate = value;
+            }
+        }
+
+        public TimeSpan DefaultCheckInTime { get; set; } = new TimeSpan(15, 0, 0); // Default check-in time is 3:00 PM
+
+        public TimeSpan DefaultCheckOutTime { get; set; } = new TimeSpan(11, 0, 0); // Default check-out time is 11:00 AM
+
         #endregion
         /// <summary>
         /// Initializes a new instance of the Hotel class with the specified name and type.
@@ -162,6 +184,7 @@ namespace InnManager.Hotels
                 OnPropertyChanged(nameof(OccupiedRoomCount));
             }
         }
+
 
         private void OnPropertyChanged(string propertyName)
         {

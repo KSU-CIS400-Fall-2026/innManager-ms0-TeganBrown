@@ -46,6 +46,21 @@ namespace InnManager.Billing
             }
         }
 
+        private Invoice _invoice;
+
+        public Invoice Invoice
+        {
+            get => _invoice;
+            set
+            {
+                if (_invoice == value) return;
+                _invoice = value;
+                OnPropertyChanged(nameof(Invoice));
+            }
+        }
+
+       
+
         private bool _isRefunded = false;
 
         public bool IsRefunded

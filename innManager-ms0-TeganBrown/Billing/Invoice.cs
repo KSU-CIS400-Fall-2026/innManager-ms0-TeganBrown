@@ -170,6 +170,7 @@ namespace InnManager.Billing
         {
             if (e.PropertyName == nameof(BillingRecord.Amount)
                 || e.PropertyName == nameof(BillingRecord.IsProcessed)
+                || sender is Charge && e.PropertyName == nameof(Charge.Category)
                 || string.IsNullOrEmpty(e.PropertyName))
             {
                 OnBillingTotalsChanged();

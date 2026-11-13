@@ -7,6 +7,7 @@ namespace InnManager.Enums
     public enum HousekeepingTaskStatus
     {
         Completed,
-        NotCompleted
+        NotCompleted,
+        Scheduled
     }
 }
