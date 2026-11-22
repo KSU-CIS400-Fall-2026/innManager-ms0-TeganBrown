@@ -169,6 +169,20 @@ namespace InnManager.Reservations
             }
         }
 
+        public decimal ReservationCost
+        {
+            get
+            {
+                if (Room == null)
+                {
+                    return 0;
+                }
+                int numberOfNights = (CheckOutDate - CheckInDate).Days;
+                decimal roomRate = Room.NightlyRate;
+                return numberOfNights * roomRate;
+            }
+        }
+
         public override string ToString() => $"{Room.roomNumber}: {GuestName}";
 
         public event PropertyChangedEventHandler? PropertyChanged;

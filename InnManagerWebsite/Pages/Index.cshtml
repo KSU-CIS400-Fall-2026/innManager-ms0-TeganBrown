@@ -1,0 +1,66 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to InnManager</h1>
+    <p>Welcome to the InnManager Hotel Administration Website. This application provides an overview of hotel rooms, guest information, reservations, and housekeeping operations.</p>
+</div>
+
+<h2 id="rooms">Rooms</h2>
+<table>
+	@foreach (var room in Model.Rooms)
+	{
+		<tr>
+			<td>@room.roomNumber:&nbsp;&nbsp;</td>
+			<td>@room.roomType&nbsp;&nbsp;</td>
+			<td>$@room.NightlyRate&nbsp;&nbsp;</td>
+			<td>@room.Status</td>
+		</tr>
+	}
+</table>
+
+<h2 id="reservations">Reservations</h2>
+<table>
+	@foreach (var reservation in Model.Reservations)
+	{
+		<tr>
+			<td>@reservation.ReservationNumber:&nbsp;&nbsp;</td>
+			<td>@reservation.GuestName&nbsp;&nbsp;</td>
+			<td>@reservation.Room&nbsp;&nbsp;</td>
+			<td>@reservation.CheckInDate.Date&nbsp;&nbsp;</td>
+			<td>@reservation.CheckOutDate.Date&nbsp;&nbsp;</td>
+			<td>$@reservation.ReservationCost&nbsp;&nbsp;</td>
+			<td>@reservation.Status</td>
+		</tr>
+	}
+</table>
+
+<h2 id="guests">Guests</h2>
+<table>
+	@foreach (var guest in Model.Guests)
+	{
+		<tr>
+			<td>@guest.ToString():&nbsp;&nbsp;</td>
+			<td>@guest.Email&nbsp;&nbsp;</td>
+			<td>@guest.PhoneNumber&nbsp;&nbsp;</td>
+			<td>@guest.GuestID</td>
+		</tr>
+	}
+</table>
+
+<h2 id="housekeeping">Housekeeping</h2>
+<table>
+	@foreach (var task in Model.HousekeepingTasks)
+	{
+		<tr>
+			<td>@task.TaskID:&nbsp;&nbsp;</td>
+			<td>@task.RoomNumber&nbsp;&nbsp;</td>
+			<td>@task.ScheduledDate.Date&nbsp;&nbsp;</td>
+			<td>@task.Status&nbsp;&nbsp;</td>
+			<td>@task.AssignedStaff</td>
+		</tr>
+	}
+</table>

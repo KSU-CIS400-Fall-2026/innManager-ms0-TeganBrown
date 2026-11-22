@@ -89,6 +89,11 @@ namespace InnManager.Housekeeping
             }
         }
 
+        public string TaskID
+        {
+            get => "TSK-" + RoomNumber + "-" + ScheduledDate.ToString("yyyyMMdd");
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
